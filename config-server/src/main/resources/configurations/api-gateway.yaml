@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        customer-server-url: lb://customer-service
+        discovery-server-url: http://localhost:8761
+logging:
+  level:
+    root: info
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: info
+    org.springframework.cloud.gateway: trace
+    org.springframework.security: DEBUG
+server:
+  port: 8762
+  forward-headers-strategy: framework
