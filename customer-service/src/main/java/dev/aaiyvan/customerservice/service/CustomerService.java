@@ -1,12 +1,24 @@
 package dev.aaiyvan.customerservice.service;
 
-import org.springframework.stereotype.Service;
+import dev.aaiyvan.customerservice.model.dto.CustomerRequest;
+import dev.aaiyvan.customerservice.model.dto.CustomerResponse;
+import dev.aaiyvan.customerservice.model.entity.Customer;
 
-@Service
-public class CustomerService {
+import java.util.List;
+import java.util.UUID;
 
-    public String test(){
-        return "Testing...";
-    }
+public interface CustomerService {
+
+    Customer getByCustomerId(UUID customerId);
+
+    List<CustomerResponse> getAllCustomers();
+
+    CustomerResponse getInfoCustomer(UUID customerId);
+
+    CustomerResponse createCustomer(CustomerRequest customerRequest);
+
+    CustomerResponse updateCustomer(CustomerRequest customerRequest, UUID customerId);
+
+    void deleteCustomer(UUID customerId);
 
 }
