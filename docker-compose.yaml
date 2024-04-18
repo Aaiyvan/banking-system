@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  backend:
+
+services:
+
+  #############################################################################
+  ###### Data Bases ###########################################################
+  #############################################################################
+
+  postgres-customer:
+    container_name: customer-service-db
+    image: postgres:14
+    environment:
+      POSTGRES_DB: customer-service
+      POSTGRES_USER: aaiyvan
+      POSTGRES_PASSWORD: aaiyvan
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./volumes/customer:/data/postgres
