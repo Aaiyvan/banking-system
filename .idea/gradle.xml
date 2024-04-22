@@ -12,10 +12,26 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/account-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/account-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/api-gateway" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/api-gateway" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/auth-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/auth-service" />
           </set>
         </option>
       </GradleProjectSettings>
@@ -28,6 +44,14 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/credit-card-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/credit-card-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/customer-service" />
         <option name="modules">
           <set>
@@ -36,18 +60,82 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/customer-service/banking-system" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/customer-service/banking-system" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/discovery-service" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/discovery-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/invitation-code-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/invitation-code-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/loan-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/loan-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/loyalty-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/loyalty-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/mail-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/mail-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/news-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/news-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/piggy-bank-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/piggy-bank-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/qr-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/qr-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/storage-servie" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/storage-servie" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/transaction-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/transaction-service" />
           </set>
         </option>
       </GradleProjectSettings>
