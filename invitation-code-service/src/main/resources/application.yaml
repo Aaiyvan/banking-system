@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: invitation-code-service
+  config:
+    import: optional:configserver:http://localhost:1991
+  cloud:
+    config:
+      fail-fast: true

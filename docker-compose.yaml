@@ -20,3 +20,8 @@ services:
       - "5433:5432"
     volumes:
       - ./volumes/customer:/data/postgres
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
