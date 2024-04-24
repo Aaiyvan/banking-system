@@ -124,10 +124,10 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/storage-servie" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/storage-service" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/storage-servie" />
+            <option value="$PROJECT_DIR$/storage-service" />
           </set>
         </option>
       </GradleProjectSettings>

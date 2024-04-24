@@ -3,6 +3,11 @@ version: '3'
 networks:
   backend:
 
+volumes:
+  minio-data:
+    driver: local
+
+
 services:
 
   #############################################################################
@@ -21,7 +26,31 @@ services:
     volumes:
       - ./volumes/customer:/data/postgres
 
+  postgres-storage:
+    container_name: storage-service-db
+    image: postgres:14
+    environment:
+      POSTGRES_DB: storage-service
+      POSTGRES_USER: aaiyvan
+      POSTGRES_PASSWORD: aaiyvan
+    ports:
+      - "5438:5432"
+    volumes:
+      - ./volumes/customer:/data/postgres
+
   redis:
     image: redis
     ports:
       - "6379:6379"
+
+  minio:
+    image: minio/minio:latest
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    command: server ~/minio --console-address :9090
+    ports:
+      - '9090:9090'
+      - '9000:9000'
+    volumes:
+      - ./volumes/storage:/data/minio
