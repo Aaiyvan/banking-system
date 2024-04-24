@@ -28,7 +28,7 @@ public interface MinioFileService {
     void delete(UUID id);
 
     /**
-     * Finds an S3File entity by its file name and source.
+     * Finds an MinioFile entity by its file name and source.
      *
      * @param fileName the name of the file.
      * @param source the source of the file content.
