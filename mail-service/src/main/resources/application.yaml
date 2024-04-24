@@ -1,0 +1,36 @@
+spring:
+  config:
+    import: optional:file:mail-service/.env[mail-service/.properties]
+  kafka:
+    queues:
+      greeting: email-sending-greeting-queue
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+      bootstrap-servers: http://localhost:9092
+  mail:
+    host: ${SPRING_MAIL_HOST}
+    port: ${SPRING_MAIL_PORT}
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
+    properties:
+      mail:
+        debug: false
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    sender:
+      email: no-reply@banking-system.com
+  freemarker:
+    template-loader-path: "classpath:/templates"
+server:
+  port: 8765
