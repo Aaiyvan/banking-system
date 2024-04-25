@@ -38,6 +38,18 @@ services:
     volumes:
       - ./volumes/customer:/data/postgres
 
+  postgres-news:
+    container_name: news-service-db
+    image: postgres:14
+    environment:
+      POSTGRES_DB: news-service
+      POSTGRES_USER: aaiyvan
+      POSTGRES_PASSWORD: aaiyvan
+    ports:
+      - "5437:5432"
+    volumes:
+      - ./volumes/news:/data/postgres
+
   redis:
     image: redis
     ports:

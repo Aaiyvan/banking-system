@@ -1,0 +1,25 @@
+spring:
+#  jmx:
+#    enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5437/news-service
+    username: aaiyvan
+    password: aaiyvan
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  main:
+    banner-mode: off
+  jpa:
+    hibernate:
+      ddl-auto: none
+minio:
+  bucket:
+    content-bucket: NEWS_CONTENT
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8780
