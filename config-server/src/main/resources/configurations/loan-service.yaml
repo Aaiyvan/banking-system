@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5436/loan-service
+    username: aaiyvan
+    password: aaiyvan
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  main:
+    banner-mode: off
+  jpa:
+    hibernate:
+      ddl-auto: none
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+cb:
+  url: https://www.cbr.ru/eng/key-indicators/
+  keyRate:
+    pattern:
+      section: Key rate.*\d{2}\.\d{2}%
+      value: \d{2}\.\d{2}%
+server:
+  port: 8085
