@@ -1,16 +1,36 @@
 spring:
+  kafka:
+    queues:
+      student: customer-saving-queue
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      properties:
+        spring:
+        json:
+          trusted:
+          packages: "*"
+      bootstrap-servers: http://localhost:9092
   datasource:
     url: jdbc:postgresql://localhost:5433/customer-service
+    driver-class-name: org.postgresql.Driver
     username: aaiyvan
     password: aaiyvan
-  jpa:
-    show-sql: true
-  liquibase:
-    enabled: true
-    change-log: classpath:db/changelog/db.changelog-master.yaml
+    liquibase:
+      enabled: false
+      change-log: classpath:db/changelog/db.changelog-master.yaml
+    jpa:
+      show-sql: true
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+minio:
+  s3:
+    default:
+      avatar: https://placeholder-images-uni-portal-v1.s3.ap-south-1.amazonaws.com/d2244ea084c84df19a022eb43e58351e
+    bucket:
+      profile-bucket: USER_PROFILE_IMAGE
 server:
   port: 8081

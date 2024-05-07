@@ -1,17 +1,19 @@
 package dev.aaiyvan.customerservice.service.impl;
 
+import dev.aaiyvan.customerservice.client.StorageServiceClient;
 import dev.aaiyvan.customerservice.exception.CustomerNotFoundException;
-import dev.aaiyvan.customerservice.exception.InvalidArgumentException;
 import dev.aaiyvan.customerservice.mapper.CustomerMapper;
 import dev.aaiyvan.customerservice.model.dto.CustomerRequest;
 import dev.aaiyvan.customerservice.model.dto.CustomerResponse;
 import dev.aaiyvan.customerservice.model.entity.Customer;
+import dev.aaiyvan.customerservice.model.payload.FileUploadResponse;
 import dev.aaiyvan.customerservice.repository.CustomerRepository;
 import dev.aaiyvan.customerservice.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,11 +23,18 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
+    private final StorageServiceClient storageServiceClient;
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
 
+    @Value("${minio.s3.bucket.profile-bucket}")
+    private String CUSTOMER_PROFILE;
+
+    @Value("${minio.s3.default.avatar}")
+    private String DEFAULT_AVATAR;
+
     @Override
-    public Customer getByCustomerId(
+    public Customer getCustomer(
             final UUID customerId
     ) {
         return customerRepository.findById(customerId)
@@ -41,19 +50,14 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerResponse getInfoCustomer(
             final UUID customerId
     ) {
-        return customerMapper.toResponse(getByCustomerId(customerId));
+        return customerMapper.toResponse(getCustomer(customerId));
     }
 
     @Override
-    @Transactional
     public CustomerResponse createCustomer(
             final CustomerRequest customerRequest
     ) {
         Customer customer = customerMapper.toCustomer(customerRequest);
-
-        if (customer == null) {
-            throw new InvalidArgumentException("Customer or accountId cannot be null");
-        }
 
         customerRepository.save(customer);
         log.info("Saving customer with id: {}", customer.getId());
@@ -62,14 +66,14 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    @Transactional
     public CustomerResponse updateCustomer(
             final CustomerRequest customerRequest,
             final UUID customerId
     ) {
-        Customer existingCustomer = getByCustomerId(customerId);
+        Customer existingCustomer = getCustomer(customerId);
         Customer updatedCustomer = customerMapper.toCustomer(customerRequest);
         updatedCustomer.setId(existingCustomer.getId());
+        updatedCustomer.setAvatar(existingCustomer.getAvatar());
 
         customerRepository.save(updatedCustomer);
         log.info("Updating customer with id: {}", updatedCustomer.getId());
@@ -78,11 +82,39 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    @Transactional
     public void deleteCustomer(
             final UUID customerId
     ) {
         customerRepository.deleteById(customerId);
+    }
+
+    @Override
+    public void uploadAvatar(
+            final UUID customerId,
+            final MultipartFile file
+    ) {
+        Customer customer = getCustomer(customerId);
+        FileUploadResponse[] fileUploadResponses = storageServiceClient.uploadAvatar(
+                CUSTOMER_PROFILE,
+                String.valueOf(customerId),
+                file).getBody();
+        log.info("Avatar was uploaded.");
+        assert fileUploadResponses != null;
+        customer.setAvatar(fileUploadResponses[0].url());
+        customerRepository.saveAndFlush(customer);
+    }
+
+    @Override
+    public void deleteAvatar(
+            final UUID customerId
+    ) {
+
+        Customer customer = getCustomer(customerId);
+        String[] info = storageServiceClient.getInfoAvatar(customer.getAvatar()).getBody();
+        assert info != null;
+        storageServiceClient.deleteAvatar(info[0], info[1]);
+        customer.setAvatar(DEFAULT_AVATAR);
+        customerRepository.saveAndFlush(customer);
     }
 
 }

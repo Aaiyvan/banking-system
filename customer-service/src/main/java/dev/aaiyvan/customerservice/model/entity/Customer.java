@@ -7,20 +7,21 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(schema = "customer", name = "t_customers")
+@Table(name = "t_customers")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Customer {
 
     @Id
-    @GeneratedValue
-    @JdbcTypeCode(SqlTypes.VARCHAR)
+    @GeneratedValue(strategy = GenerationType.UUID)
     UUID id;
 
     @Column(name = "c_firstname")
@@ -39,7 +40,7 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     Gender gender;
 
-    @Column(name = "c_account_id")
-    UUID accountId;
+    @Column(name = "c_avatar")
+    String avatar;
 
 }
