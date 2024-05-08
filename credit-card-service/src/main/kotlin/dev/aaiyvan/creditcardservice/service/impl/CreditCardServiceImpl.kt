@@ -19,7 +19,6 @@ class CreditCardServiceImpl(
     override fun createCreditCard(creditCardRequest: CreditCardRequest): CreditCardResponse {
         val creditCard = creditCardMapper.toCreditCard(creditCardRequest)
         creditCardRepository.save(creditCard)
-        println("Saving card with id: ${creditCard.id}")
 
         return creditCardMapper.toResponse(creditCard)
     }
