@@ -1,0 +1,16 @@
+server:
+  port:
+    8089
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  data:
+    mongodb:
+      uri:
+        mongodb://localhost:27017/credit-card-service
+      database: credit-card-service
+      auto-index-creation: true
+  main:
+    banner-mode: off

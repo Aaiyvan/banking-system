@@ -74,6 +74,17 @@ services:
     volumes:
       - ./volumes/loan:/data/postgres
 
+  mongo-credit-card:
+    container_name: credit-card-service-db
+    image: mongo:7
+    environment:
+      MONGO_INITDB_DATABASE: credit-card-service
+      MONGO_INITDB_ROOT_USERNAME: aaiyvan
+      MONGO_INITDB_ROOT_PASSWORD: aaiyvan
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./volumes/credit-card:/data/mongo-db
 
   redis:
     image: redis
