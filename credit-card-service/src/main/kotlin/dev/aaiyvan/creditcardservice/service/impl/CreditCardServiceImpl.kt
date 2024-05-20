@@ -7,7 +7,6 @@ import dev.aaiyvan.creditcardservice.model.dto.CreditCardResponse
 import dev.aaiyvan.creditcardservice.model.entity.CreditCard
 import dev.aaiyvan.creditcardservice.repository.CreditCardRepository
 import dev.aaiyvan.creditcardservice.service.CreditCardService
-import lombok.extern.slf4j.Slf4j
 import org.springframework.stereotype.Service
 
 @Service
