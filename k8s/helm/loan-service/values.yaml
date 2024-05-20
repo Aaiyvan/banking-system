@@ -1,4 +1,4 @@
-image: 192.168.49.1:5000/banking-system/customer-service:24.1.1
+image: 192.168.49.1:5000/banking-system/loan-service:24.1.1
 vmagent:
   image: victoriametrics/vmagent:v1.93.12
   remoteWrite:
