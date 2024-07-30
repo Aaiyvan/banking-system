@@ -21,6 +21,7 @@
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
 		<lombok-mapstruct-binding>0.2.0</lombok-mapstruct-binding>
 		<openapi.version>2.1.0</openapi.version>
+		<debezium.version>2.4.1.Final</debezium.version>
 	</properties>
 
 	<dependencies>
@@ -62,6 +63,13 @@
 				<groupId>org.springdoc</groupId>
 				<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 				<version>${openapi.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.debezium</groupId>
+				<artifactId>debezium-testing-testcontainers</artifactId>
+				<version>${debezium.version}</version>
+				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
